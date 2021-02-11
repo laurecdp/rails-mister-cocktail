@@ -9,32 +9,34 @@
 require 'json'
 require 'open-uri'
 
-url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+ingredients_url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+cocktail_url = 'https://raw.githubusercontent.com/teijo/iba-cocktails/master/recipes.json'
 
-serialized_drinks = open(url).read
+serialized_cocktails = open(cocktail_url).read
+serialized_ingredients = open(ingredients_url).read
 
-drinks = JSON.parse(serialized_drinks)
-ingredients = drinks['drinks']
-ingredient = []
+list_of_cocktails = JSON.parse(serialized_cocktails)
+list_of_ingredients = JSON.parse(serialized_ingredients)
 
-puts 'Creating 10 fake ingredients...'
-
+Cocktail.destroy_all
+Dose.destroy_all
 Ingredient.destroy_all
 
-# 10.times do
-#   ingredients.each do |drink|
-#     ingredient << drink['drinks']
-#       ingredient.each do |i|
-#      Ingredient.create(name: i)
-#       end
-#   end
-# end
+ingredients = list_of_ingredients['drinks']
 
-Cocktail.create(name: )
+puts 'Creating fake ingredients...'
 
-Ingredient.create(name: "lemon")
-Ingredient.create(name: "ice")
-Ingredient.create(name: "mint leaves")
-Ingredient.create(name: "soda")
+50.times do
+  ingredients.each do |ingredient|
+    ingredient_name = ingredient.values
+    Ingredient.create(name: ingredient_name)
+  end
+end
+
+50.times do
+  list_of_cocktails.each do |cocktail|
+    Cocktail.create(name: cocktail['name'])
+  end
+end
 
 puts 'Finished!'

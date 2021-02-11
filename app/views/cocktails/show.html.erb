@@ -8,6 +8,8 @@
             method: :delete,
             data: { confirm: "Are you sure?" } %>
   <% end %>
+  <% @cocktail.ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %></li>
 </ul>
 
 <%= link_to "Create a dose", new_cocktail_dose_path(@cocktail) %>
