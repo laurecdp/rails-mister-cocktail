@@ -30,6 +30,8 @@ Ingredient.destroy_all
 #   end
 # end
 
+Cocktail.create(name: )
+
 Ingredient.create(name: "lemon")
 Ingredient.create(name: "ice")
 Ingredient.create(name: "mint leaves")
