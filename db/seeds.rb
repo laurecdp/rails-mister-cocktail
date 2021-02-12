@@ -29,6 +29,7 @@ puts 'Creating fake ingredients...'
 50.times do
   ingredients.each do |ingredient|
     ingredient_name = ingredient.values
+    ingredient_name.flatten
     Ingredient.create(name: ingredient_name)
   end
 end

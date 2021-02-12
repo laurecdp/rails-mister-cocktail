@@ -1,0 +1,25 @@
+// Place all the styles related to the doses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.container {
+  justify-content: center;
+  text-align: center;
+}
+
+.btn {
+  color: #f8efef;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #d96f00;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #d96f00;
+  color: #f8efef;
+}
+
+h1 {
+  color: #f8efef;
+  margin: 20px auto;
+}
