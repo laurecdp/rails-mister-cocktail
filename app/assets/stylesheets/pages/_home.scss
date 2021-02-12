@@ -1,1 +1,14 @@
 // Specific CSS for your home-page
+.home-bg{
+  background-image: asset-url('cocktail.png');
+  color: #eee;
+  height: 100vh;
+  background-size: cover;
+  text-align: center;
+  padding-top: 40vh;
+}
+
+
+a {
+  color: whitesmoke;
+}

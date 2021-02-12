@@ -1,0 +1,23 @@
+body {
+  background-color: hsl(173, 69%, 3%);
+}
+
+.container > container {
+  display: flex;
+}
+
+.card {
+  margin: 20px auto;
+  width: auto;
+  height: auto;
+  background-color: hsla(175, 73%, 3%, 0.829);
+  color: whitesmoke;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.card-text {
+  text-align: center;
+}
