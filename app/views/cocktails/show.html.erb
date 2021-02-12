@@ -1,17 +1,23 @@
-<h1> <%= @cocktail.name %> </h1>
-
-<ul>
-  <% @cocktail.doses.each do |dose| %>
-    <li><%= dose.description %></li>
-    <%= link_to "Delete",
-            dose_path(dose),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
-  <% end %>
-  <% @cocktail.ingredients.each do |ingredient| %>
-    <li><%= ingredient.name %></li>
-</ul>
-
-<%= link_to "Create a dose", new_cocktail_dose_path(@cocktail) %>
-<%= link_to "Back to cocktails", cocktails_path %>
-
+<div class="card bg-dark text-white">
+  <div class="card-img-overlay">
+    <%= image_tag "https://source.unsplash.com/featured/?cocktail", alt: cocktail.name, width: 200, class="card-img" %>
+    <h5 class="card-title"> <%= @cocktail.name %> </h5>
+    <p class="card-text">  
+      <% @cocktail.doses.each do |dose| %>
+        <%= dose.description %>
+        <%= link_to "Delete",
+                dose_path(dose),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+       <% end %>
+      </p>
+      <p class="card-text">  
+          <% @cocktail.ingredients.each do |ingredient| %>
+          <%= ingredient.name %>
+          <% end %>
+      </p>
+      <p class="card-text"> <%= link_to "Create a dose", new_cocktail_dose_path(@cocktail) %>
+      <p class="card-text"> <%= link_to "Back to cocktails", root_path %>
+      </p> 
+  </div>
+</div>
