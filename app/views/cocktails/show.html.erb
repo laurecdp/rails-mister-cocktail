@@ -1,7 +1,8 @@
 <div class="card bg-dark text-white">
   <img src="https://source.unsplash.com/featured/?cocktails/300x300" class="card-img" alt="coktail">
   <div class="card-img-overlay">
-    <h5 class="card-title"> <%= @cocktail.name %> </h5>
+    <div class= "container">
+    <h1 class="card-title"> <%= @cocktail.name %> </h1>
     <p class="card-text">  
       <% @cocktail.doses.each do |dose| %>
         <%= dose.description %>
@@ -19,5 +20,6 @@
       <p class="card-text"> <%= link_to "Create a dose", new_cocktail_dose_path(@cocktail) %>
       <p class="card-text"> <%= link_to "Back to cocktails", cocktails_path %>
       </p> 
+      </div>
   </div>
 </div>
