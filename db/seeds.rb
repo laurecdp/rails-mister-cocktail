@@ -5,17 +5,17 @@ Cocktail.destroy_all
 Dose.destroy_all
 Ingredient.destroy_all
 
-ingredients_url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+ingredients_url = 'https://raw.githubusercontent.com/teijo/iba-cocktails/master/recipes.json'
 serialized_ingredients = open(ingredients_url).read
 list_of_ingredients = JSON.parse(serialized_ingredients)
-ingredients = list_of_ingredients['drinks']
 puts 'Adding ingredients...'
 
-ingredients.each do |list_ingredients|
-  ingredient_names = list_ingredients.values
-  ingredient_names.each do |ingredient|
-    Ingredient.create(name: ingredient)
-  end
+list_of_ingredients.each do |ingredient|
+  puts ingredient['ingredients']
+  # ingredient_names.each do |ingredient|
+  #   Ingredient.create(name: ingredient,
+  #                     label: label)
+  # end
 end
 
 puts "#{Ingredient.all.count} ingredients added"
