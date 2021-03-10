@@ -4,10 +4,15 @@
     
     <div class="container-show">
       <h1 class="card-title"> <%= @cocktail.name %> </h1>
+      <p> Serve in a <%= @cocktail.glass %> glass </p>
       <p class="card-text">
+      <h3>Recipe</h3>
+      <p> Add <%= @cocktail.garnish %> garnish </p>
+      <p> <%= @cocktail.preparation %> </p>
+      
       <h3>Description</h3>
         <% @cocktail.doses.each do |dose| %>
-          <%= dose.description %>
+          <p> Fill with <%= dose.description %> </p>
           <%= link_to "🗑️",
                   dose_path(dose),
                   method: :delete,
@@ -15,6 +20,11 @@
         <% end %>
         <% @cocktail.ingredients.each do |ingredient| %>
           <%= ingredient.name %>
+          <%= ingredient.label %>
+          <%= ingredient.special %>
+          <%= ingredient.amount %>
+          <%= ingredient.unit %>
+
         <% end %>
     </div>
 

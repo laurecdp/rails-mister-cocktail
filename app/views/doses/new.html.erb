@@ -6,9 +6,13 @@
     <%= simple_form_for [@cocktail, @dose] do |f| %>
       <%= f.input :description,
                   label: "Add a description" %>
-      <%= f.association :ingredient,
-                        label: "Choose ingredients",
-                        as: :select %>
+      <%= f.simple_fields_for :doses do |g| %>
+        <%= g.input :ingredient_id,
+                      label: "Choose ingredients",
+                      as: :check_boxes,
+                      include_blank: :false,
+                      collection: Ingredient.all %>
+      <% end %>
       <%= f.button :submit, "Save", class: 'btn btn-index' %>
     <% end %>
   </div>
