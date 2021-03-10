@@ -8,8 +8,17 @@
   padding-top: 40vh;
 }
 
+.btn-home {
+  color: white;
+  font-size: 24px;
+  padding: 16px 40px;
+  border-radius: 4px;
+  border-color: #5b0814;
+  background: #c70d10;
+  transition: background 0.3s ease;
+}
 
-a tab-underlined active {
-  color: whitesmoke;
-  text-decoration: none;
+.btn-home:hover {
+  background: #5b0814;
+  color: white;
 }
