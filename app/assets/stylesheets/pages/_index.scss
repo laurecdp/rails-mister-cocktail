@@ -23,6 +23,18 @@ body {
   text-align: center;
 }
 
-.btn-light {
+.btn-index {
+  color: white;
+  font-size: 16px;
+  padding: 16px 40px;
   margin: 20px auto;
+  border-radius: 4px;
+  border-color: #5b0814;
+  background: #c70d10;
+  transition: background 0.3s ease;
+}
+
+.btn-index:hover {
+  background: #5b0814;
+  color: white;
 }

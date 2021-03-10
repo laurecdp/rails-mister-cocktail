@@ -1,5 +1,14 @@
-<%= simple_form_for(@cocktail) do |f| %>
-  <%= f.input :name %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+
+  <div class="form-card">
+    <h1>Create your cocktail</h1>
+
+    <%= simple_form_for(@cocktail) do |f| %>
+      <%= f.input :name, 
+                  label: "Please, enter below the name of your cocktail" %>
+      <%= f.button :submit, "Save", class: 'btn btn-index' %>
+    <% end %>
+    
+  </div>
+</div>
 

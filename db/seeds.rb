@@ -1,42 +1,65 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first
-
 require 'json'
 require 'open-uri'
-
-ingredients_url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
-cocktail_url = 'https://raw.githubusercontent.com/teijo/iba-cocktails/master/recipes.json'
-
-serialized_cocktails = open(cocktail_url).read
-serialized_ingredients = open(ingredients_url).read
-
-list_of_cocktails = JSON.parse(serialized_cocktails)
-list_of_ingredients = JSON.parse(serialized_ingredients)
 
 Cocktail.destroy_all
 Dose.destroy_all
 Ingredient.destroy_all
 
-ingredients = list_of_ingredients['drinks']
+ingredients_url = 'https://raw.githubusercontent.com/teijo/iba-cocktails/master/recipes.json'
+serialized_ingredients = open(ingredients_url).read
+list_of_ingredients = JSON.parse(serialized_ingredients)
+puts 'Adding ingredients...'
 
-puts 'Creating fake ingredients...'
+list_of_ingredients.each do |x|
+  ingredient = x['ingredients'][0]['ingredient']
+  label = x['ingredients'][0]['label']
+  special = x['ingredients'][0]['special']
+  amount = x['ingredients'][0]['amount']
+  unit = x['ingredients'][0]['unit']
+  Ingredient.create(name: ingredient,
+                    label: label,
+                    special: special,
+                    amount: amount,
+                    unit: unit)
+end
 
-50.times do
-  ingredients.each do |ingredient|
-    ingredient_name = ingredient.values
-    Ingredient.create(name: ingredient_name)
+list_of_ingredients.each do |x|
+  ingredient = x['ingredients'][1]['ingredient']
+  label = x['ingredients'][1]['label']
+  special = x['ingredients'][1]['special']
+  amount = x['ingredients'][1]['amount']
+  unit = x['ingredients'][1]['unit']
+  Ingredient.create(name: ingredient,
+                    label: label,
+                    special: special,
+                    amount: amount,
+                    unit: unit)
+end
+
+list_of_ingredients.each do |x|
+  if x['ingredients'][2]
+    Ingredient.create(name: x['ingredients'][2]['ingredient'],
+                      label: x['ingredients'][2]['label'],
+                      special: x['ingredients'][2]['special'],
+                      amount: x['ingredients'][2]['amount'],
+                      unit: x['ingredients'][2]['unit'])
   end
 end
 
-50.times do
-  list_of_cocktails.each do |cocktail|
-    Cocktail.create(name: cocktail['name'])
-  end
+puts "#{Ingredient.all.count} ingredients added"
+
+cocktail_url = 'https://raw.githubusercontent.com/teijo/iba-cocktails/master/recipes.json'
+serialized_cocktails = open(cocktail_url).read
+list_of_cocktails = JSON.parse(serialized_cocktails)
+puts 'Creating cocktails...'
+
+list_of_cocktails.each do |cocktail|
+  Cocktail.create(name: cocktail['name'],
+                  glass: cocktail['glass'],
+                  preparation: cocktail['preparation'],
+                  garnish: cocktail['garnish'])
 end
+
+puts "#{Cocktail.all.count} cocktails added"
 
 puts 'Finished!'

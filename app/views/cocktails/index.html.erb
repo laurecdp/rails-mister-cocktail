@@ -1,8 +1,6 @@
 <div class="container">
 
-  <%= link_to(new_cocktail_path) do %>
-    <button type="button" class="btn btn-light">Create a cocktail</button>
-  <% end %>
+  <%= link_to "Create a cocktail", new_cocktail_path,class:"btn btn-index" %>
 
   <div class="container">
       <%= simple_form_for :search, url: root_path, method: :get do |f| %>
@@ -23,9 +21,7 @@
                 <img src="https://source.unsplash.com/featured/?cocktail/300x300" class="card-img" alt="coktail">
                 <div class="card-body">
                   <h5 class="card-title"> <%= cocktail.name%></h5>
-                  <p class="card-text"> <%= link_to(cocktail_path(cocktail)) do %>
-                      <button type="button" class="btn btn-light">Details</button>
-                      <% end %>
+                  <p class="card-text"> <%= link_to "Details", cocktail_path(cocktail), class: "btn btn-index" %>
                   </p>
                 </div>
               </div>
