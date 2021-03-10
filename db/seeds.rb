@@ -27,7 +27,9 @@ puts 'Creating cocktails...'
 
 list_of_cocktails.each do |cocktail|
   Cocktail.create(name: cocktail['name'],
-                  preparation: cocktail['preparation'])
+                  glass: cocktail['glass'],
+                  preparation: cocktail['preparation'],
+                  garnish: cocktail['garnish'])
 end
 
 puts "#{Cocktail.all.count} cocktails added"
