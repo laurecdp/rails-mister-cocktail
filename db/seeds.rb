@@ -10,12 +10,20 @@ serialized_ingredients = open(ingredients_url).read
 list_of_ingredients = JSON.parse(serialized_ingredients)
 puts 'Adding ingredients...'
 
-list_of_ingredients.each do |ingredient|
-  puts ingredient['ingredients']
-  # ingredient_names.each do |ingredient|
-  #   Ingredient.create(name: ingredient,
-  #                     label: label)
-  # end
+list_of_ingredients.each do |x|
+  ingredient = x['ingredients'][0]['ingredient']
+  label = x['ingredients'][0]['label']
+  Ingredient.create(name: ingredient,
+                    label: label,
+                    special: special)
+end
+
+list_of_ingredients.each do |x|
+  ingredient = x['ingredients'][0]['ingredient']
+  label = x['ingredients'][0]['label']
+  Ingredient.create(name: ingredient,
+                    label: label, 
+                    special: special)
 end
 
 puts "#{Ingredient.all.count} ingredients added"
