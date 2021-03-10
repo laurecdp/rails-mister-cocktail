@@ -13,17 +13,37 @@ puts 'Adding ingredients...'
 list_of_ingredients.each do |x|
   ingredient = x['ingredients'][0]['ingredient']
   label = x['ingredients'][0]['label']
+  special = x['ingredients'][0]['special']
+  amount = x['ingredients'][0]['amount']
+  unit = x['ingredients'][0]['unit']
   Ingredient.create(name: ingredient,
                     label: label,
-                    special: special)
+                    special: special,
+                    amount: amount,
+                    unit: unit)
 end
 
 list_of_ingredients.each do |x|
-  ingredient = x['ingredients'][0]['ingredient']
-  label = x['ingredients'][0]['label']
+  ingredient = x['ingredients'][1]['ingredient']
+  label = x['ingredients'][1]['label']
+  special = x['ingredients'][1]['special']
+  amount = x['ingredients'][1]['amount']
+  unit = x['ingredients'][1]['unit']
   Ingredient.create(name: ingredient,
-                    label: label, 
-                    special: special)
+                    label: label,
+                    special: special,
+                    amount: amount,
+                    unit: unit)
+end
+
+list_of_ingredients.each do |x|
+  if x['ingredients'][2]
+    Ingredient.create(name: x['ingredients'][2]['ingredient'],
+                      label: x['ingredients'][2]['label'],
+                      special: x['ingredients'][2]['special'],
+                      amount: x['ingredients'][2]['amount'],
+                      unit: x['ingredients'][2]['unit'])
+  end
 end
 
 puts "#{Ingredient.all.count} ingredients added"
