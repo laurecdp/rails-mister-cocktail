@@ -5,10 +5,20 @@ p {
 .container-show {
   background-color: white;
   opacity: 0.7;
-  margin: 150px;
+  margin-left: 700px;
+  margin-top: 300px;
+  margin-bottom: 300px;
 }
 
 h1.card-title {
   font-size: 54px;
   color: black;
+}
+
+.card-img-overlay {
+  display: flex;
+}
+
+.btn-show {
+ 
 }

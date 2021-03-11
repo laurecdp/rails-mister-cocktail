@@ -1,6 +1,9 @@
 <div class="card bg-dark text-white">
-  <img src="https://source.unsplash.com/featured/?cocktails/300x300" class="card-img" alt="coktail">
+
+  <img src="https://source.unsplash.com/featured/?cocktail/1600x900" class="card-img" alt="coktail">
   <div class="card-img-overlay">
+    <%= link_to "Create a dose", new_cocktail_dose_path(@cocktail), class: "btn btn-show" %>
+    <%= link_to "Back to cocktails", cocktails_path, class: "btn btn-show" %>
     
     <div class="container-show">
       <h1 class="card-title"> <%= @cocktail.name %> </h1>
@@ -27,9 +30,6 @@
 
         <% end %>
     </div>
-
-    <%= link_to "Create a dose", new_cocktail_dose_path(@cocktail), class: "btn btn-index" %>
-    <%= link_to "Back to cocktails", cocktails_path, class: "btn btn-index" %>
-
   </div>
+    
 </div>
