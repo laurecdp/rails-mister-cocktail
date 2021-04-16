@@ -2,6 +2,8 @@
 
   <%= link_to "Create a cocktail", new_cocktail_path,class:"btn btn-index" %>
 
+  <%= render './shared/navbar.html.erb' %>
+  
   <div class="container">
       <%= simple_form_for :search, url: root_path, method: :get do |f| %>
         <div class="search-form-control form-group">
