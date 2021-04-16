@@ -1,35 +1,41 @@
-<div class="card bg-dark text-white">
+<div class="container-show">
 
-  <img src="https://source.unsplash.com/featured/?cocktail/1600x900" class="card-img" alt="coktail">
-  <div class="card-img-overlay">
-    <%= link_to "Create a dose", new_cocktail_dose_path(@cocktail), class: "btn btn-show" %>
-    <%= link_to "Back to cocktails", cocktails_path, class: "btn btn-show" %>
-    
-    <div class="container-show">
+  <div class="card-show">
+
+    <img src="https://source.unsplash.com/featured/?cocktail" class="card-img" alt="coktail">
+
+    <div class="card-img-overlay">
+      <%= link_to "Create a dose", new_cocktail_dose_path(@cocktail), class: "btn btn-show" %>
+      <%= link_to "Back to cocktails", cocktails_path, class: "btn btn-show" %>
+
       <h1 class="card-title"> <%= @cocktail.name %> </h1>
-      <p> Serve in a <%= @cocktail.glass %> glass </p>
-      <p class="card-text">
-      <h3>Recipe</h3>
-      <p> Add <%= @cocktail.garnish %> garnish </p>
-      <p> <%= @cocktail.preparation %> </p>
-      
-      <h3>Description</h3>
-        <% @cocktail.doses.each do |dose| %>
-          <p> Fill with <%= dose.description %> </p>
-          <%= link_to "🗑️",
-                  dose_path(dose),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
-        <% end %>
-        <% @cocktail.ingredients.each do |ingredient| %>
-          <%= ingredient.name %>
-          <%= ingredient.label %>
-          <%= ingredient.special %>
-          <%= ingredient.amount %>
-          <%= ingredient.unit %>
+        <p> Serve in a <%= @cocktail.glass %> glass </p>
 
-        <% end %>
+      <div class="card-text">
+        <h3>Recipe</h3>
+        <p> Add <%= @cocktail.garnish %> garnish </p>
+        <p> <%= @cocktail.preparation %> </p>
+      
+        <h3>Description</h3>
+          <% @cocktail.doses.each do |dose| %>
+            <p> Fill with <%= dose.description %> </p>
+            <%= link_to "🗑️",
+                    dose_path(dose),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %>
+          <% end %>
+
+          <% @cocktail.ingredients.each do |ingredient| %>
+            <%= ingredient.name %>
+            <%= ingredient.label %>
+            <%= ingredient.special %>
+            <%= ingredient.amount %>
+            <%= ingredient.unit %>
+          <% end %>
+      </div>
+        
     </div>
+    
   </div>
     
 </div>

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container bg-new">
 
   <div class="form-card">
     <h1>Create your cocktail</h1>
@@ -6,6 +6,15 @@
     <%= simple_form_for(@cocktail) do |f| %>
       <%= f.input :name, 
                   label: "Please, enter below the name of your cocktail" %>
+      <%= f.simple_fields_for :doses do |g| %>
+      <%= g.input :description, 
+                  label: 'Add a description' %>
+      <%= g.input :ingredient_id,
+                      label: "Choose ingredients",
+                      as: :check_boxes,
+                      include_blank: :false,
+                      collection: Ingredient.all %>
+      <% end %>
       <%= f.button :submit, "Save", class: 'btn btn-index' %>
     <% end %>
     
