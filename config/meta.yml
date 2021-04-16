@@ -1,5 +1,5 @@
 meta_product_name: "Tales of Fancy"
 meta_title: "Tales of Fancy - Make Your Own Luxury Cocktails"
-meta_description: "Relevant description"
+meta_description: "Application for showcasing and creating of cocktails"
 meta_image: "cocktail.png" # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"   # required for Twitter Cards
